@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мамонтов Алексей | Студент ИТМО</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset и базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #FF4081;
+            --secondary: #00BCD4;
+            --accent: #FFC107;
+            --dark: #1A237E;
+            --light: #F5F5F7;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 20px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.7;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Типография - большие и жирные шрифты */
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        
+        h2 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        p {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Компоненты макета */
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* Шапка и навигация */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2.2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--accent);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.9) 0%, rgba(0, 188, 212, 0.85) 100%);
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero p {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), #FF9800);
+            color: var(--dark);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.4rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Секция "Обо мне" */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+        
+        .about-text {
+            position: relative;
+        }
+        
+        .itmo-badge {
+            display: inline-block;
+            background-color: var(--dark);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .python-course {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), #E91E63);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .visual-item {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            width: 100%;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 6px solid var(--secondary);
+        }
+        
+        .visual-item:hover {
+            transform: translateX(10px);
+        }
+        
+        /* Секция навыков */
+        .skills {
+            background-color: var(--light);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .skill-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-15px);
+        }
+        
+        .skill-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        /* Секция проектов */
+        .projects {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+        }
+        
+        .project-header {
+            background: linear-gradient(90deg, var(--secondary), var(--dark));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-content .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        /* Секция контактов */
+        .contact {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 20px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1.2rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 2rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-10px);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Адаптивный дизайн */
+        @media (max-width: 1100px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-visual {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark);
+                text-align: center;
+                padding: 40px 0;
+                gap: 30px;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 90px;
+            }
+            
+            .social-links a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: clamp(2.8rem, 12vw, 4.5rem);
+            }
+            
+            h2 {
+                font-size: clamp(2.2rem, 9vw, 3.2rem);
+            }
+            
+            .hero p {
+                font-size: clamp(1.3rem, 5vw, 1.8rem);
+            }
+            
+            .btn {
+                padding: 15px 35px;
+                font-size: 1.2rem;
+            }
+            
+            .skills-container, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка и навигация -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-code logo-icon"></i>
+                    Мамонтов Алексей
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#projects">Проекты</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Мамонтов Алексей</h1>
+                <p>Студент ИТМО • Группа P3120 • Python-разработчик</p>
+                <p>Обучаюсь на лучшем курсе по программированию на Python и создаю инновационные проекты</p>
+                <a href="#projects" class="btn">Мои проекты</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Обо мне" -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="itmo-badge">
+                        <i class="fas fa-graduation-cap"></i> Студент ИТМО, группа P3120
+                    </div>
+                    <p>Привет! Я <span class="highlight">Алексей Мамонтов</span>, студент Университета ИТМО, где изучаю программирование и компьютерные науки. Моя специализация — разработка программного обеспечения и анализ данных.</p>
+                    
+                    <div class="python-course floating">
+                        <i class="fab fa-python"></i> Лучший курс по Python-программированию
+                    </div>
+                    
+                    <p>В данный момент прохожу интенсивный курс по Python, где изучаю продвинутые темы: асинхронное программирование, машинное обучение, веб-разработку на Django и FastAPI, а также оптимизацию кода.</p>
+                    <p>Моя цель — стать высококвалифицированным разработчиком и создавать решения, которые упростят жизнь людей и бизнеса. Увлекаюсь алгоритмами, анализом данных и созданием пользовательских интерфейсов.</p>
+                    <a href="#contact" class="btn">Связаться со мной</a>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-item">
+                        <h3><i class="fas fa-university"></i> ИТМО P3120</h3>
+                        <p>Кафедра компьютерных технологий. Изучаю алгоритмы, структуры данных, базы данных и веб-технологии.</p>
+                    </div>
+                    <div class="visual-item">
+                        <h3><i class="fab fa-python"></i> Python-курс</h3>
+                        <p>Продвинутое программирование, фреймворки, data science и лучшие практики разработки.</p>
+                    </div>
+                    <div class="visual-item">
+                        <h3><i class="fas fa-rocket"></i> Цели</h3>
+                        <p>Создание инновационных проектов, участие в хакатонах и стажировка в технологической компании.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция навыков -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Мои навыки</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Продвинутый уровень: Django, FastAPI, асинхронное программирование, анализ данных с Pandas и NumPy, машинное обучение с Scikit-learn.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Базы данных</h3>
+                    <p>PostgreSQL, MySQL, MongoDB. Проектирование схем, оптимизация запросов, работа с ORM (SQLAlchemy, Django ORM).</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Веб-разработка</h3>
+                    <p>HTML5, CSS3, JavaScript, React. Создание адаптивных интерфейсов, работа с REST API, деплой приложений.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Инструменты</h3>
+                    <p>Git, Docker, Linux, Jupyter, VS Code. CI/CD, тестирование (pytest), отладка и профилирование кода.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция проектов -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Мои проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Анализатор кода на Python</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Инструмент для статического анализа Python-кода с проверкой на соответствие PEP8, поиском антипаттернов и оценкой сложности алгоритмов.</p>
+                        <p><strong>Технологии:</strong> Python, AST, multiprocessing, CLI-интерфейс</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Платформа для обучения</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Веб-приложение для онлайн-курсов с системой проверки заданий, чатом и аналитикой успеваемости студентов.</p>
+                        <p><strong>Технологии:</strong> Django, PostgreSQL, Redis, Celery, JavaScript</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Анализ данных ИТМО</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Исследование успеваемости студентов с визуализацией результатов и прогнозированием на основе машинного обучения.</p>
+                        <p><strong>Технологии:</strong> Pandas, NumPy, Matplotlib, Scikit-learn, Jupyter</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция контактов -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Связаться со мной</h2>
+            <p>Ищу возможности для стажировки, сотрудничества над проектами или участия в хакатонах. Буду рад обсудить интересные идеи!</p>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Ваш email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="6" placeholder="Ваше сообщение" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">МА</div>
+            <h3>Мамонтов Алексей</h3>
+            <p>Студент ИТМО • Группа P3120 • Python-разработчик</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Мамонтов Алексей. Все права защищены.</p>
+                <p>Студент ИТМО, группа P3120 | Обучаюсь на лучшем курсе по программированию на Python</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Переключение мобильной навигации
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Закрыть мобильное меню при клике на ссылку
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Отправка формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за ваше сообщение! Я свяжусь с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Добавление анимации при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдаем за элементами для анимации
+        document.querySelectorAll('.skill-card, .project-card, .visual-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
