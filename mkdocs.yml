@@ -1,0 +1,11 @@
+site_name: Мамонтов Алексей
+site_url: https://Alexey-student2104.github.io/
+nav:
+  - Главная: index.md
+  - Обо мне: about.md
+  - Проекты: projects.md
+theme:
+  name: dracula
+  palette:
+    scheme: dracula
+    primary: purple
