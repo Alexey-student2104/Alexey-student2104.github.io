@@ -1,7 +1,5 @@
 site_name: Мамонтов Алексей
 site_url: https://Alexey-student2104.github.io/
-docs_dir: src
-site_dir: docs
 nav:
   - Главная: index.md
   - Обо мне: about.md
@@ -11,3 +9,4 @@ theme:
   palette:
     scheme: dracula
     primary: purple
+docs_dir: src
