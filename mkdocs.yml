@@ -7,7 +7,7 @@ nav:
   - Обо мне: about.md
   - Проекты: projects.md
 theme:
-  name: material
+  name: dracula
   palette:
     scheme: dracula
     primary: purple
