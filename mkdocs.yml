@@ -4,6 +4,9 @@ nav:
   - Главная: index.md
   - Обо мне: about.md
   - Проекты: projects.md
+  - Лабораторные работы:
+      - 1 семестр: labs/sem1.md
+      - 2 семестр: labs/sem2.md
 theme:
   name: dracula
   palette:
