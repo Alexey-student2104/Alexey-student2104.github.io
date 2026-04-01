@@ -13,4 +13,5 @@ theme:
   palette:
     scheme: dracula
     primary: purple
-docs_dir: source
+docs_dir: .
+site_dir: site
