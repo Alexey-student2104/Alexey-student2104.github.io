@@ -7,6 +7,7 @@ nav:
   - Лабораторные работы:
       - 1 семестр: labs/sem1.md
       - 2 семестр: labs/sem2.md
+      - 2 лабораторная: labs/lab_2.md
 theme:
   name: dracula
   palette:
