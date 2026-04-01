@@ -1,5 +1,6 @@
 site_name: Мамонтов Алексей
 site_url: https://Alexey-student2104.github.io/
+
 nav:
   - Главная: index.md
   - Обо мне: about.md
@@ -8,10 +9,12 @@ nav:
       - 1 семестр: labs/sem1.md
       - 2 семестр: labs/sem2.md
       - 2 лабораторная: labs/lab_2.md
+
 theme:
   name: dracula
   palette:
     scheme: dracula
     primary: purple
+
 docs_dir: .
-site_dir: site
+site_dir: ../site

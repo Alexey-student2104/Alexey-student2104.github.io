@@ -20,14 +20,13 @@ jobs:
       - name: Install MkDocs dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-simple-blog
+          pip install mkdocs mkdocs-dracula-theme
 
       - name: Build site
-        working-directory: source
-        run: mkdocs build --clean --strict
+        run: mkdocs build -f source/mkdocs.yml --clean --strict
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: mkdocs-site
-          path: source/site
+          path: site
