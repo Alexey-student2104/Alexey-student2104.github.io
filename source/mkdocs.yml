@@ -2,21 +2,37 @@ site_name: Мамонтов Алексей
 site_url: https://Alexey-student2104.github.io/
 
 nav:
-  - Главная: index.md
-  - Обо мне: about.md
-  - Проекты: projects.md
+  - Главная: source/index.md
+  - Обо мне: source/about.md
+  - Проекты: source/projects.md
   - Лабораторные работы:
-      - 1 семестр: labs/sem1.md
-      - 2 семестр: labs/sem2.md
-      - 2 лабораторная: labs/lab_2.md
-      - 4 лабораторная: labs/lab_4.md
-      - 5 лабораторная: labs/lab_5.md
+      - 1 семестр: source/labs/sem1.md
+      - 2 семестр: source/labs/sem2.md
+      - 2 лабораторная: source/labs/lab_2.md
+      - 4 лабораторная: source/labs/lab_4.md
+      - 5 лабораторная: source/labs/lab_5.md
 
 theme:
-  name: dracula
+  name: material
+  language: ru
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
   palette:
-    scheme: dracula
-    primary: purple
+    - scheme: default
+      primary: black
+      accent: grey
+      toggle:
+        icon: material/weather-sunny
+        name: Переключить на темную тему
+    - scheme: slate
+      primary: black
+      accent: grey
+      toggle:
+        icon: material/weather-night
+        name: Переключить на светлую тему
 
 docs_dir: .
 site_dir: ../site
