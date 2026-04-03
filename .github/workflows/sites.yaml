@@ -43,7 +43,7 @@ jobs:
           mkdocs --version
 
       - name: Build site
-        run: mkdocs build -f source/mkdocs.yml --clean --strict
+        run: mkdocs build -f mkdocs.yml --clean --strict
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
