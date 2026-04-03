@@ -9,6 +9,8 @@ nav:
       - 1 семестр: labs/sem1.md
       - 2 семестр: labs/sem2.md
       - 2 лабораторная: labs/lab_2.md
+      - 4 лабораторная: labs/lab_4.md
+      - 5 лабораторная: labs/lab_5.md
 
 theme:
   name: dracula
